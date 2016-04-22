@@ -9,12 +9,19 @@ public class Process {
 	private SimpleLongProperty baseAddress;
 	private ProcessType type;
 	
-	Process(String name, long size, long baseAddress, ProcessType type)
+	public Process(String name, long size, long baseAddress, ProcessType type)
 	{
 		this.name = new SimpleStringProperty(name);
 		this.size = new SimpleLongProperty(size);
 		this.baseAddress = new SimpleLongProperty(baseAddress);
 		this.type = type;
+	}
+	
+	public Process(Process process) {
+		this.name = new SimpleStringProperty(process.getName());
+		this.size = new SimpleLongProperty(process.getSize());
+		this.baseAddress = new SimpleLongProperty(process.getBaseAddress());
+		this.type = process.getType();
 	}
 	
 	public String getName() {
@@ -43,7 +50,5 @@ public class Process {
 	public void setType(ProcessType type) {
 		this.type = type;
 	}
-	
-	
 	
 }
