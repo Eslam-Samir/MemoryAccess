@@ -1,10 +1,9 @@
 package application;
 	
-import java.util.LinkedList;
+import java.util.ArrayList;
 
-import allocator.MemoryAllocator;
+import allocator.*;
 import allocator.Process;
-import allocator.ProcessType;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -26,24 +25,28 @@ public class Main extends Application {
 			
 			/*
 			Process p0 = new Process("P0",  200, 0, ProcessType.process);
-			Process p1 = new Process("P1",  1000, 0, ProcessType.process);
+			Process p1 = new Process("P1",  300, 0, ProcessType.process);
 			Process p2 = new Process("P2",  800, 0, ProcessType.process);
-			LinkedList<Process> input = new LinkedList<>();
+			ArrayList<Process> input = new ArrayList<>();
 			input.add(p0); 
 			input.add(p1);
 			input.add(p2);
 			
-			Process h0 = new Process("h0",  700, 0, ProcessType.hole);
-			Process h1 = new Process("h1",  800, 800, ProcessType.hole);
+			Process h0 = new Process("h0",  800, 0, ProcessType.hole);
+			Process h1 = new Process("h1",  600, 900, ProcessType.hole);
 			Process h2 = new Process("h2",  2000, 1800, ProcessType.hole);
-			LinkedList<Process> holes = new LinkedList<>();
+			ArrayList<Process> holes = new ArrayList<>();
 			holes.add(h0); 
 			holes.add(h1);
 			holes.add(h2);
 			
-			MemoryAllocator mem = new MemoryAllocator(3, input, holes);
-			mem.firstFit();
-			*/
+			MemoryAllocator mem = new FirstFitAllocator(3, input, holes);
+			mem.RunAllocator();
+			//mem.getOutput();
+			mem.DeallocateProcess("P0");
+			mem.DeallocateProcess("P1");
+			mem.DeallocateProcess("P2");
+			mem.getOutput();*/
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
