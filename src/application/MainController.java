@@ -28,9 +28,6 @@ public class MainController implements Initializable {
 	private TextField startingAddress;
 	
 	@FXML
-	private ComboBox<String> type;
-	
-	@FXML
 	private TextField ProcessName;
 	
 	@FXML
@@ -42,57 +39,59 @@ public class MainController implements Initializable {
 	@FXML
 	public ComboBox<String> combobox;
 	
-	private int holeSize;
-	private int holeAdress;
-	private String NameOfProcess;
-	private int sizeOfProcess;
-	private int numberOfProcess;
-	private String allocationType;
-	private ArrayList<Process> holes=new ArrayList<Process>();
-	private ArrayList<Process> processes=new ArrayList<Process>();
-	private TablesController tablecontroller;
-	private Parent root;
+	private ArrayList<Integer> ProcessesSizes = new ArrayList<Integer>();
+	private ArrayList<String> ProcessesNames = new ArrayList<String>();
+	
+	private ArrayList<Integer> HolesSizes = new ArrayList<Integer>();
+	private ArrayList<Integer> HolesAddresses = new ArrayList<Integer>();
+	
 	private ObservableList<String> list = FXCollections.observableArrayList(
 			Contstant.FF,
 			Contstant.BF,
 			Contstant.WF
             );
-	public void pressAddHole(ActionEvent event) {
-		holeSize=Integer.valueOf(size.getText());
-		holeAdress=Integer.valueOf(startingAddress.getText());
-		tablecontroller.AddHole(holeSize, holeAdress);
+	
+	public void pressAddHole(ActionEvent event) 
+	{
+		HolesSizes.add(Integer.valueOf(size.getText()));
+		HolesAddresses.add(Integer.valueOf(startingAddress.getText()));
 	}
-public void pressAddProcess(ActionEvent event) {
-		NameOfProcess=ProcessName.toString();
-		sizeOfProcess=Integer.valueOf(ProcessSize.getText());
-		tablecontroller.AddProcess(NameOfProcess, sizeOfProcess);
+	public void pressAddProcess(ActionEvent event) 
+	{
+		ProcessesSizes.add(Integer.valueOf(ProcessSize.getText()));
+		ProcessesNames.add(ProcessName.getText());
 	}
-	public void typeChoise(ActionEvent event) {
-		allocationType=combobox.getValue();	
-	}
-	public void pressNext(ActionEvent event) throws IOException {
-		Stage stage=(Stage)size.getScene().getWindow();
-
-        tablecontroller.setAllocationType(allocationType);
+	
+	public void pressNext(ActionEvent event) throws IOException 
+	{
+		Stage stage = (Stage) combobox.getScene().getWindow();
+		
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Tables.fxml"));
+        
+        TablesController tablecontroller = new TablesController();
+		String type = combobox.getValue();
+		
+		for(int i = 0; i < ProcessesSizes.size(); i++)
+		{
+			tablecontroller.AddProcess(ProcessesNames.get(i), ProcessesSizes.get(i));
+		}
+		for(int i = 0; i < ProcessesSizes.size(); i++)
+		{
+			tablecontroller.AddHole(HolesSizes.get(i), HolesAddresses.get(i));
+		}
+		
+		tablecontroller.setAllocationType(type);
+		
+		loader.setController(tablecontroller);
+		Parent root = loader.load();
         Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 	}
 	
 	@Override
-	public void initialize(URL location, ResourceBundle application) {
-		numberOfProcess=Integer.valueOf(NumberOfProcesses.getText());
-		System.out.print(allocationType);
-		Stage stage=(Stage)size.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Tables.fxml"));
-        try {
-			root = loader.load();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        tablecontroller=loader.getController();
-        
+	public void initialize(URL location, ResourceBundle application) 
+	{
 		combobox.setItems(list);
 	}
 	
