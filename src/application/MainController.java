@@ -55,11 +55,15 @@ public class MainController implements Initializable {
 	{
 		HolesSizes.add(Integer.valueOf(size.getText()));
 		HolesAddresses.add(Integer.valueOf(startingAddress.getText()));
+		size.clear();
+		startingAddress.clear();
 	}
 	public void pressAddProcess(ActionEvent event) 
 	{
 		ProcessesSizes.add(Integer.valueOf(ProcessSize.getText()));
 		ProcessesNames.add(ProcessName.getText());
+		ProcessSize.clear();
+		ProcessName.clear();
 	}
 	
 	public void pressNext(ActionEvent event) throws IOException 
@@ -75,7 +79,7 @@ public class MainController implements Initializable {
 		{
 			tablecontroller.AddProcess(ProcessesNames.get(i), ProcessesSizes.get(i));
 		}
-		for(int i = 0; i < ProcessesSizes.size(); i++)
+		for(int i = 0; i < HolesSizes.size(); i++)
 		{
 			tablecontroller.AddHole(HolesSizes.get(i), HolesAddresses.get(i));
 		}
