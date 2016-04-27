@@ -30,8 +30,14 @@ public class MainController implements Initializable {
 	@FXML
 	private TextField NumberOfProcesses;
 	
+	@FXML
+	public ComboBox<String> combobox;
+	
 	private int holeSize;
 	private int holeAdress;
+	private String NameOfProcess;
+	private int sizeOfProcess;
+	private int numberOfProcess;
 	private String allocationType;
 	private ObservableList<String> list = FXCollections.observableArrayList(
 			Contstant.FF,
@@ -39,23 +45,24 @@ public class MainController implements Initializable {
 			Contstant.WF
             );
 	public void pressAddHole(ActionEvent event) {
-		
+		holeSize=Integer.valueOf(size.getText());
+		holeAdress=Integer.valueOf(startingAddress.getText());
 		
 	}
 public void pressAddProcess(ActionEvent event) {
-		
+		NameOfProcess=ProcessName.toString();
+		sizeOfProcess=Integer.valueOf(ProcessSize.getText());
 		
 	}
 	public void pressNext(ActionEvent event) {
 		
 	}
+	public void typeChoise(ActionEvent event) {
+		
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle application) {
-		intializeComboBox();
+		combobox.setItems(list);
 	}
 	
-	public void intializeComboBox(){
-		type.setItems(list);
-	}
-
 }

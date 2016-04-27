@@ -42,7 +42,7 @@
       <Button layoutX="207.0" layoutY="340.0" mnemonicParsing="false" onAction="#pressAddProcess" prefHeight="43.0" prefWidth="128.0" text="Add" />
       <TextField fx:id="txtProcessName" layoutX="228.0" layoutY="210.0" prefHeight="43.0" prefWidth="270.0" promptText="Process Name " />
       <TextField fx:id="txtsProcessSize" layoutX="228.0" layoutY="271.0" prefHeight="43.0" prefWidth="270.0" promptText="Process Size" />
-      <ComboBox fx:id="type" layoutX="281.0" layoutY="404.0" prefHeight="43.0" prefWidth="232.0" promptText="Select Type " />
+      <ComboBox fx:id="combobox" layoutX="281.0" layoutY="404.0" onAction="#typeChoise" prefHeight="43.0" prefWidth="232.0" promptText="Select Type " />
       <Label layoutX="43.0" layoutY="390.0" prefHeight="53.0" prefWidth="232.0" text="Method of Allocation:">
          <font>
             <Font size="24.0" />
