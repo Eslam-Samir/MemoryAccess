@@ -8,9 +8,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 
-public class MainController {
+public class MainController implements Initializable {
 	@FXML
 	private TextField size;
 	
@@ -48,7 +49,7 @@ public void pressAddProcess(ActionEvent event) {
 	public void pressNext(ActionEvent event) {
 		
 	}
-	
+	@Override
 	public void initialize(URL location, ResourceBundle application) {
 		intializeComboBox();
 	}
