@@ -5,9 +5,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-
-import allocator.ProcessType;
-import allocator.Process;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -85,6 +82,7 @@ public class MainController implements Initializable {
 		}
 		
 		tablecontroller.setAllocationType(type);
+		tablecontroller.setNumberOfProcesses(Integer.valueOf(NumberOfProcesses.getText()));
 		
 		loader.setController(tablecontroller);
 		Parent root = loader.load();
