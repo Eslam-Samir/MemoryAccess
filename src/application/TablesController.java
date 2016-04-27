@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import allocator.Process;
 
 public class TablesController {
-	private ArrayList<Process> holes;
-	private ArrayList<Process>processes;
+	private ArrayList<Process> holes=new ArrayList<Process>();
+	private ArrayList<Process>processes=new ArrayList<Process>();
 	private String allocationType;
 	public String getAllocationType() {
 		return allocationType;
