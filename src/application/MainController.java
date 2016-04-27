@@ -1,15 +1,25 @@
 package application;
-import java.awt.TextField;
+
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import allocator.MemoryAllocator;
+import allocator.ProcessType;
+import allocator.Process;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class MainController implements Initializable {
 	@FXML
@@ -39,6 +49,8 @@ public class MainController implements Initializable {
 	private int sizeOfProcess;
 	private int numberOfProcess;
 	private String allocationType;
+	private ArrayList<Process> holes;
+	private ArrayList<Process> processes;
 	private ObservableList<String> list = FXCollections.observableArrayList(
 			Contstant.FF,
 			Contstant.BF,
@@ -47,18 +59,30 @@ public class MainController implements Initializable {
 	public void pressAddHole(ActionEvent event) {
 		holeSize=Integer.valueOf(size.getText());
 		holeAdress=Integer.valueOf(startingAddress.getText());
+		holes.add(new Process("", holeSize, holeAdress, ProcessType.hole));
 		
 	}
 public void pressAddProcess(ActionEvent event) {
 		NameOfProcess=ProcessName.toString();
 		sizeOfProcess=Integer.valueOf(ProcessSize.getText());
-		
+		processes.add(new Process(NameOfProcess, sizeOfProcess,0,ProcessType.process));
 	}
-	public void pressNext(ActionEvent event) {
-		
+	public void pressNext(ActionEvent event) throws IOException {
+		numberOfProcess=Integer.valueOf(NumberOfProcesses.getText());
+		System.out.print(allocationType);
+		Stage stage=(Stage) type.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Tables.fxml"));
+        Parent root = loader.load();
+        TablesController tablecontroller=loader.getController();
+        tablecontroller.setHoles(holes);
+        tablecontroller.setProcesses(processes);
+        tablecontroller.setAllocationType(allocationType);
+        Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
 	}
 	public void typeChoise(ActionEvent event) {
-		
+		allocationType=combobox.getValue();	
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle application) {
