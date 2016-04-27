@@ -3,11 +3,13 @@ package application;
 import java.util.ArrayList;
 
 import allocator.Process;
+import allocator.ProcessType;
 
 public class TablesController {
 	private ArrayList<Process> holes=new ArrayList<Process>();
 	private ArrayList<Process>processes=new ArrayList<Process>();
 	private String allocationType;
+	
 	public String getAllocationType() {
 		return allocationType;
 	}
@@ -15,18 +17,14 @@ public class TablesController {
 		this.allocationType = allocationType;
 	}
 	
-	public ArrayList<Process> getHoles() {
-		return holes;
+	public void AddHole (int size,int Address) {
+		holes.add(new Process("", size,Address,ProcessType.hole));
+		
 	}
-	public void setHoles(ArrayList<Process> holes) {
-		this.holes = holes;
+	public void AddProcess (String name,int size) {
+		processes.add(new Process(name, size,0,ProcessType.process));
+		
 	}
-	public ArrayList<Process> getProcesses() {
-		return processes;
-	}
-	public void setProcesses(ArrayList<Process> processes) {
-		this.processes = processes;
-	}
-	
+
 
 }

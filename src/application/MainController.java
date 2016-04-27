@@ -50,6 +50,8 @@ public class MainController implements Initializable {
 	private String allocationType;
 	private ArrayList<Process> holes=new ArrayList<Process>();
 	private ArrayList<Process> processes=new ArrayList<Process>();
+	private TablesController tablecontroller;
+	private Parent root;
 	private ObservableList<String> list = FXCollections.observableArrayList(
 			Contstant.FF,
 			Contstant.BF,
@@ -58,27 +60,19 @@ public class MainController implements Initializable {
 	public void pressAddHole(ActionEvent event) {
 		holeSize=Integer.valueOf(size.getText());
 		holeAdress=Integer.valueOf(startingAddress.getText());
-		//System.out.println(holeSize+"    "+holeAdress);
-		holes.add(new Process(" ", holeSize, holeAdress, ProcessType.hole));
-		
+		tablecontroller.AddHole(holeSize, holeAdress);
 	}
 public void pressAddProcess(ActionEvent event) {
 		NameOfProcess=ProcessName.toString();
 		sizeOfProcess=Integer.valueOf(ProcessSize.getText());
-		processes.add(new Process(NameOfProcess, sizeOfProcess,0,ProcessType.process));
+		tablecontroller.AddProcess(NameOfProcess, sizeOfProcess);
 	}
 	public void typeChoise(ActionEvent event) {
 		allocationType=combobox.getValue();	
 	}
 	public void pressNext(ActionEvent event) throws IOException {
-		numberOfProcess=Integer.valueOf(NumberOfProcesses.getText());
-		System.out.print(allocationType);
 		Stage stage=(Stage)size.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Tables.fxml"));
-        Parent root = loader.load();
-        TablesController tablecontroller=loader.getController();
-        tablecontroller.setHoles(holes);
-        tablecontroller.setProcesses(processes);
+
         tablecontroller.setAllocationType(allocationType);
         Scene scene = new Scene(root);
 		stage.setScene(scene);
@@ -87,6 +81,18 @@ public void pressAddProcess(ActionEvent event) {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle application) {
+		numberOfProcess=Integer.valueOf(NumberOfProcesses.getText());
+		System.out.print(allocationType);
+		Stage stage=(Stage)size.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Tables.fxml"));
+        try {
+			root = loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        tablecontroller=loader.getController();
+        
 		combobox.setItems(list);
 	}
 	
