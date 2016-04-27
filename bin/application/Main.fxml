@@ -9,10 +9,10 @@
 
 <AnchorPane prefHeight="618.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <TextField fx:id="txtsize" layoutX="228.0" layoutY="36.0" prefHeight="43.0" prefWidth="270.0" promptText="Hole Size" />
+      <TextField fx:id="size" layoutX="228.0" layoutY="36.0" prefHeight="43.0" prefWidth="270.0" promptText="Hole Size" />
       <Button layoutX="207.0" layoutY="535.0" mnemonicParsing="false" onAction="#pressNext" prefHeight="43.0" prefWidth="128.0" text="Next" />
       <Button layoutX="207.0" layoutY="145.0" mnemonicParsing="false" onAction="#pressAddHole" prefHeight="43.0" prefWidth="128.0" text="Add" />
-      <TextField fx:id="txtstartingAddress" layoutX="228.0" layoutY="86.0" prefHeight="43.0" prefWidth="270.0" promptText="Hole Starting Address" />
+      <TextField fx:id="startingAddress" layoutX="228.0" layoutY="86.0" prefHeight="43.0" prefWidth="270.0" promptText="Hole Starting Address" />
       <Label layoutX="37.0" layoutY="40.0" prefHeight="32.0" prefWidth="64.0" text="Size:">
          <font>
             <Font size="24.0" />
@@ -28,7 +28,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNumberOfProcesses" layoutX="281.0" layoutY="480.0" prefHeight="43.0" prefWidth="232.0" promptText="Number Of processes " />
+      <TextField fx:id="NumberOfProcesses" layoutX="281.0" layoutY="480.0" prefHeight="43.0" prefWidth="232.0" promptText="Number Of processes " />
       <Label layoutX="37.0" layoutY="214.0" prefHeight="35.0" prefWidth="164.0" text="Process Name:">
          <font>
             <Font size="24.0" />
@@ -40,8 +40,8 @@
          </font>
       </Label>
       <Button layoutX="207.0" layoutY="340.0" mnemonicParsing="false" onAction="#pressAddProcess" prefHeight="43.0" prefWidth="128.0" text="Add" />
-      <TextField fx:id="txtProcessName" layoutX="228.0" layoutY="210.0" prefHeight="43.0" prefWidth="270.0" promptText="Process Name " />
-      <TextField fx:id="txtsProcessSize" layoutX="228.0" layoutY="271.0" prefHeight="43.0" prefWidth="270.0" promptText="Process Size" />
+      <TextField fx:id="ProcessName" layoutX="228.0" layoutY="210.0" prefHeight="43.0" prefWidth="270.0" promptText="Process Name " />
+      <TextField fx:id="ProcessSize" layoutX="228.0" layoutY="271.0" prefHeight="43.0" prefWidth="270.0" promptText="Process Size" />
       <ComboBox fx:id="combobox" layoutX="281.0" layoutY="404.0" onAction="#typeChoise" prefHeight="43.0" prefWidth="232.0" promptText="Select Type " />
       <Label layoutX="43.0" layoutY="399.0" prefHeight="53.0" prefWidth="232.0" text="Method of Allocation:">
          <font>

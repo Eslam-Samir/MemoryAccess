@@ -59,7 +59,8 @@ public class MainController implements Initializable {
 	public void pressAddHole(ActionEvent event) {
 		holeSize=Integer.valueOf(size.getText());
 		holeAdress=Integer.valueOf(startingAddress.getText());
-		holes.add(new Process("", holeSize, holeAdress, ProcessType.hole));
+		System.out.print(holeSize+"    "+holeAdress);
+		//holes.add(new Process(" ", holeSize, holeAdress, ProcessType.hole));
 		
 	}
 public void pressAddProcess(ActionEvent event) {
