@@ -45,6 +45,7 @@ public class TablesController implements Initializable{
 	private int numberOfProcesses;
 	private ArrayList<ArrayList<Process>> output;
 	private int index;
+	private boolean flag=false;
 
 	
 	private ObservableList<Process> list=FXCollections.observableArrayList();
@@ -80,10 +81,27 @@ public class TablesController implements Initializable{
 		System.out.println("Added Process: "+name+ "\t" + String.valueOf(size));
 	}
 	public void pressNext(ActionEvent event) {
+		flag =false;
+		StageNumber.setText(m1.getStages().get(index));
 		setList();	
 		table.setItems(list);
-		StageNumber.setText(m1.getStages().get(index));
+		nameColumn.setCellValueFactory(new PropertyValueFactory<Process, String>("name"));
+		sizeColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("size"));
+		baseAddressColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("baseAddress"));	
+	}
+	public void pressPrevious(ActionEvent event) {	
 		
+		if (flag)
+			index--;
+		else
+			index=index-2;
+		StageNumber.setText(m1.getStages().get(index));
+		setList();
+		table.setItems(list);
+		nameColumn.setCellValueFactory(new PropertyValueFactory<Process, String>("name"));
+		sizeColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("size"));
+		baseAddressColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("baseAddress"));	
+		flag=true;
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -110,7 +128,6 @@ public class TablesController implements Initializable{
 		index=0;
 	}
 	
-	
 	public void setList() {
 		list.clear();
 		for(int i=0;i<output.get(index).size();i++){
@@ -119,7 +136,6 @@ public class TablesController implements Initializable{
 		table.setItems(list);
 		if(index < output.size()-1)
 			index++;
-		
 	}
 
 

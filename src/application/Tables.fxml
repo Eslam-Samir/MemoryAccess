@@ -9,12 +9,12 @@
 
 <AnchorPane prefHeight="517.0" prefWidth="453.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TablesController">
    <children>
-      <Label fx:id="StageNumber" layoutX="78.0" layoutY="36.0" prefHeight="39.0" prefWidth="94.0" text="Stage:">
+      <Label fx:id="StageNumber" layoutX="78.0" layoutY="36.0" prefHeight="39.0" prefWidth="271.0" text="Stage:">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="177.0" layoutY="436.0" mnemonicParsing="false" onAction="#pressNext" prefHeight="37.0" prefWidth="81.0" text="Next">
+      <Button layoutX="236.0" layoutY="451.0" mnemonicParsing="false" onAction="#pressNext" prefHeight="39.0" prefWidth="113.0" text="Next">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -25,5 +25,10 @@
             <TableColumn fx:id="baseAddressColumn" prefWidth="112.0" text="Base Address" />
         </columns>
       </TableView>
+      <Button layoutX="103.0" layoutY="450.0" mnemonicParsing="false" onAction="#pressPrevious" prefHeight="39.0" prefWidth="103.0" text="Prevoius">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
