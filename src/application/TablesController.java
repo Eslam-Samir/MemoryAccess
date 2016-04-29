@@ -21,19 +21,19 @@ import allocator.WorstFitAllocator;
 
 public class TablesController implements Initializable{
 	@FXML
-	Label StageNumber;
+	private Label StageNumber;
 	
 	@FXML
-	TableView<Process>table;
+	private TableView<Process> Table;
 	
 	@FXML
-	TableColumn<Process, String> nameColumn;
+	private TableColumn<Process, String> nameColumn;
 	
 	@FXML 
-	TableColumn<Process, Integer> sizeColumn;
+	private TableColumn<Process, Long> sizeColumn;
 	
 	@FXML
-	TableColumn<Process, Integer>baseAddressColumn; 
+	private TableColumn<Process, Long>baseAddressColumn; 
 	
 	private MemoryAllocator m1;
 	private ArrayList<Process> holes=new ArrayList<Process>();
@@ -45,7 +45,7 @@ public class TablesController implements Initializable{
 	private int index;
 
 	
-	public ObservableList<Process> list=FXCollections.observableArrayList();
+	private ObservableList<Process> list=FXCollections.observableArrayList();
 	
 
 	public String getAllocationType() {
@@ -79,8 +79,8 @@ public class TablesController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		nameColumn.setCellValueFactory(new PropertyValueFactory<Process, String>("name"));
-		sizeColumn.setCellValueFactory(new PropertyValueFactory<Process, Integer>("size"));
-		baseAddressColumn.setCellValueFactory(new PropertyValueFactory<Process, Integer>("baseAdress"));	
+		sizeColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("size"));
+		baseAddressColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("baseAddress"));	
 	}
 	
 	private void InitializeAllocationType() {
@@ -99,15 +99,24 @@ public class TablesController implements Initializable{
 		m1.RunAllocator();
 		output=m1.getOutput();
 		index=0;
-		arrayListOfThisStage=output.get(index);
 		
+		arrayListOfThisStage=output.get(index);
+		setList();
 	}
 	
 	
 	public void setList() {
 		for(int i=0;i<arrayListOfThisStage.size();i++){
 			list.add(arrayListOfThisStage.get(i));
+			
 		}
+		System.out.println("size " + list.size());
+		for(int i=0;i<list.size();i++){
+			System.out.println(list.get(i).getName());
+			System.out.println("hi");
+			
+		}
+		Table.setItems(list);
 		index++;
 		
 	}

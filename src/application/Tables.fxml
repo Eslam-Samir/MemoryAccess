@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="517.0" prefWidth="453.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TablesController">
    <children>
-      <Label layoutX="78.0" layoutY="36.0" prefHeight="39.0" prefWidth="94.0" text="Stage:">
+      <Label fx:id="StageNumber" layoutX="78.0" layoutY="36.0" prefHeight="39.0" prefWidth="94.0" text="Stage:">
          <font>
             <Font size="22.0" />
          </font>
@@ -18,11 +18,11 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <TableView layoutX="44.0" layoutY="77.0" prefHeight="349.0" prefWidth="341.0">
+      <TableView fx:id="Table" layoutX="44.0" layoutY="77.0" prefHeight="349.0" prefWidth="341.0">
         <columns>
           <TableColumn fx:id="nameColumn" prefWidth="111.0" text="Process Name" />
           <TableColumn fx:id="sizeColumn" prefWidth="117.0" text="size " />
-            <TableColumn fx:id="baseAddressColumn" prefWidth="112.0" text="Base Adress" />
+            <TableColumn fx:id="baseAddressColumn" prefWidth="112.0" text="Base Address" />
         </columns>
       </TableView>
    </children>

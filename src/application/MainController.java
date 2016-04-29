@@ -68,8 +68,8 @@ public class MainController implements Initializable {
 		Stage stage = (Stage) combobox.getScene().getWindow();
 		
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Tables.fxml"));
-        
-        TablesController tablecontroller = new TablesController();
+        Parent root = loader.load();
+        TablesController tablecontroller = loader.getController();
 		String type = combobox.getValue();
 		
 		for(int i = 0; i < ProcessesSizes.size(); i++)
@@ -81,11 +81,9 @@ public class MainController implements Initializable {
 			tablecontroller.AddHole(HolesSizes.get(i), HolesAddresses.get(i));
 		}
 		
-		tablecontroller.setAllocationType(type);
 		tablecontroller.setNumberOfProcesses(Integer.valueOf(NumberOfProcesses.getText()));
+		tablecontroller.setAllocationType(type);
 		
-		Parent root = loader.load();
-		loader.setController(tablecontroller);
         Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
