@@ -59,13 +59,7 @@ public class TablesController implements Initializable{
 		System.out.println(allocationType);
 		InitializeAllocationType();
 		setList();
-		for(int i=0;i<list.size();i++){
-			System.out.println("Adress: "+list.get(i).getBaseAddress()
-					+"Name: "+list.get(i).getName()
-					+"size: "+list.get(i).getSize()
-					+"Type:"+list.get(i).getType()+"\t");
-		
-		}	
+			
 	}
 	
 	public int getNumberOfProcesses() {
@@ -114,16 +108,17 @@ public class TablesController implements Initializable{
 		m1.RunAllocator();
 		output=m1.getOutput();
 		index=0;
-		setList();
 	}
 	
 	
 	public void setList() {
+		list.clear();
 		for(int i=0;i<output.get(index).size();i++){
 			list.add(output.get(index).get(i));	
 		}
 		table.setItems(list);
-		index++;
+		if(index < output.size()-1)
+			index++;
 		
 	}
 
