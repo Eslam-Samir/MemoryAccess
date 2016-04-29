@@ -20,9 +20,9 @@
          </font></Button>
       <TableView layoutX="44.0" layoutY="77.0" prefHeight="349.0" prefWidth="341.0">
         <columns>
-          <TableColumn prefWidth="111.0" text="Process Name" />
-          <TableColumn prefWidth="117.0" text="size " />
-            <TableColumn prefWidth="112.0" text="Base Adress" />
+          <TableColumn fx:id="nameColumn" prefWidth="111.0" text="Process Name" />
+          <TableColumn fx:id="sizeColumn" prefWidth="117.0" text="size " />
+            <TableColumn fx:id="baseAddressColumn" prefWidth="112.0" text="Base Adress" />
         </columns>
       </TableView>
    </children>

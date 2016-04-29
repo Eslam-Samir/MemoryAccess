@@ -84,8 +84,8 @@ public class MainController implements Initializable {
 		tablecontroller.setAllocationType(type);
 		tablecontroller.setNumberOfProcesses(Integer.valueOf(NumberOfProcesses.getText()));
 		
-		loader.setController(tablecontroller);
 		Parent root = loader.load();
+		loader.setController(tablecontroller);
         Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();

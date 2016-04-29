@@ -1,6 +1,5 @@
 package application;
 
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -10,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -36,6 +34,7 @@ public class TablesController implements Initializable{
 	
 	@FXML
 	TableColumn<Process, Integer>baseAddressColumn; 
+	
 	private MemoryAllocator m1;
 	private ArrayList<Process> holes=new ArrayList<Process>();
 	private ArrayList<Process>processes=new ArrayList<Process>();
@@ -46,7 +45,7 @@ public class TablesController implements Initializable{
 	private int index;
 
 	
-public ObservableList<Process> list=FXCollections.observableArrayList();
+	public ObservableList<Process> list=FXCollections.observableArrayList();
 	
 
 	public String getAllocationType() {
@@ -56,6 +55,7 @@ public ObservableList<Process> list=FXCollections.observableArrayList();
 	public void setAllocationType(String allocationType) {
 		this.allocationType = allocationType;
 		System.out.println(allocationType);
+		InitializeAllocationType();
 	}
 	
 	public int getNumberOfProcesses() {
@@ -75,15 +75,14 @@ public ObservableList<Process> list=FXCollections.observableArrayList();
 		processes.add(new Process(name, size,0,ProcessType.process));
 		System.out.println("Added Process: "+name+ "\t" + String.valueOf(size));
 	}
-	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		InitializeAllocationType();
 		nameColumn.setCellValueFactory(new PropertyValueFactory<Process, String>("name"));
 		sizeColumn.setCellValueFactory(new PropertyValueFactory<Process, Integer>("size"));
 		baseAddressColumn.setCellValueFactory(new PropertyValueFactory<Process, Integer>("baseAdress"));	
 	}
+	
 	private void InitializeAllocationType() {
 		if (allocationType=="First Fit")
 			{
@@ -103,6 +102,8 @@ public ObservableList<Process> list=FXCollections.observableArrayList();
 		arrayListOfThisStage=output.get(index);
 		
 	}
+	
+	
 	public void setList() {
 		for(int i=0;i<arrayListOfThisStage.size();i++){
 			list.add(arrayListOfThisStage.get(i));
