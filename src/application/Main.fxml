@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import custom.views.NumberTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -29,14 +30,6 @@
                 <RowConstraints maxHeight="150.0" minHeight="108.0" prefHeight="108.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
-                  <TextField fx:id="size" promptText="Hole Size" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </TextField>
                   <Label text="Hole Size:">
                      <font>
                         <Font size="18.0" />
@@ -45,15 +38,7 @@
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="startingAddress" promptText="Hole Starting Address" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </TextField>
-                  <Label text="Hole Starting Address:" GridPane.rowIndex="1">
+                  <Label text="Hole Base Address:" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -61,6 +46,22 @@
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
+                  <NumberTextField fx:id="size" promptText="Hole Size" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </NumberTextField>
+                  <NumberTextField fx:id="startingAddress" promptText="Hole Base Address" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </NumberTextField>
                </children>
             </GridPane>
             <Separator orientation="VERTICAL" />
@@ -98,14 +99,14 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="ProcessSize" promptText="Process Size" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
+                  <NumberTextField fx:id="ProcessSize" promptText="Process Size" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
-                  </TextField>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </NumberTextField>
                </children>
             </GridPane>
          </children>
@@ -190,13 +191,14 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="NumberOfProcesses" prefHeight="43.0" prefWidth="232.0" promptText="Number Of processes " GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <NumberTextField fx:id="NumberOfProcesses" promptText="Number of Processes" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding></TextField>
+               </padding>
+            </NumberTextField>
          </children>
       </GridPane>
       <Button mnemonicParsing="false" onAction="#pressNext" text="Next">
