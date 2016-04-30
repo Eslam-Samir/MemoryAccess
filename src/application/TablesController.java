@@ -1,7 +1,5 @@
 package application;
 
-import java.io.Console;
-import java.lang.invoke.ConstantCallSite;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -45,7 +43,6 @@ public class TablesController implements Initializable{
 	private int numberOfProcesses;
 	private ArrayList<ArrayList<Process>> output;
 	private int index;
-	private boolean flag=false;
 
 	
 	private ObservableList<Process> list=FXCollections.observableArrayList();
@@ -58,8 +55,8 @@ public class TablesController implements Initializable{
 	public void setAllocationType(String allocationType) {
 		this.allocationType = allocationType;
 		System.out.println(allocationType);
-		InitializeAllocationType();
-		setList();
+		InitializeAllocator();
+		setTable();
 			
 	}
 	
@@ -72,70 +69,71 @@ public class TablesController implements Initializable{
 		System.out.println(numberOfProcesses);
 	}
 	
-	public void AddHole (int size,int Address) {
+	public void AddHole (long size,long Address) 
+	{
 		holes.add(new Process("", size,Address,ProcessType.hole));
 		System.out.println("Added Hole: "+String.valueOf(size)+ "\t" + String.valueOf(Address));
 	}
-	public void AddProcess (String name,int size) {
+	public void AddProcess (String name,long size) 
+	{
 		processes.add(new Process(name, size,0,ProcessType.process));
 		System.out.println("Added Process: "+name+ "\t" + String.valueOf(size));
 	}
-	public void pressNext(ActionEvent event) {
-		flag =false;
+	public void pressNext(ActionEvent event) 
+	{
+		if(index < output.size()-1)
+			index++;
 		StageNumber.setText(m1.getStages().get(index));
-		setList();	
-		table.setItems(list);
+		setTable();	
 		nameColumn.setCellValueFactory(new PropertyValueFactory<Process, String>("name"));
 		sizeColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("size"));
 		baseAddressColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("baseAddress"));	
 	}
-	public void pressPrevious(ActionEvent event) {	
-		
-		if (flag)
+	public void pressPrevious(ActionEvent event) 
+	{	
+		if(index > 0)
 			index--;
-		else
-			index=index-2;
 		StageNumber.setText(m1.getStages().get(index));
-		setList();
-		table.setItems(list);
+		setTable();
 		nameColumn.setCellValueFactory(new PropertyValueFactory<Process, String>("name"));
 		sizeColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("size"));
-		baseAddressColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("baseAddress"));	
-		flag=true;
+		baseAddressColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("baseAddress"));
 	}
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources) 
+	{
 		nameColumn.setCellValueFactory(new PropertyValueFactory<Process, String>("name"));
 		sizeColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("size"));
 		baseAddressColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("baseAddress"));	
 	}
 	
-	private void InitializeAllocationType() {
+	private void InitializeAllocator() 
+	{
 		if (allocationType==Contstant.FF)
-			{
-				m1=new FirstFitAllocator(numberOfProcesses, processes, holes);
-			}
+		{
+			m1=new FirstFitAllocator(numberOfProcesses, processes, holes);
+		}
 		else if(allocationType==Contstant.BF)
-			{
-				m1=new BestFitAllocator(numberOfProcesses, processes, holes);
-			}
+		{
+			m1=new BestFitAllocator(numberOfProcesses, processes, holes);
+		}
 		else if(allocationType==Contstant.WF)
-			{
-				m1=new WorstFitAllocator(numberOfProcesses, processes, holes);
-			}
+		{
+			m1=new WorstFitAllocator(numberOfProcesses, processes, holes);
+		}
 		m1.RunAllocator();
 		output=m1.getOutput();
 		index=0;
 	}
 	
-	public void setList() {
+	public void setTable() 
+	{
 		list.clear();
-		for(int i=0;i<output.get(index).size();i++){
+		for(int i=0;i<output.get(index).size();i++)
+		{
 			list.add(output.get(index).get(i));	
 		}
 		table.setItems(list);
-		if(index < output.size()-1)
-			index++;
 	}
 
 

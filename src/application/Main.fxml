@@ -1,52 +1,211 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="618.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <TextField fx:id="size" layoutX="228.0" layoutY="36.0" prefHeight="43.0" prefWidth="270.0" promptText="Hole Size" />
-      <Button layoutX="207.0" layoutY="535.0" mnemonicParsing="false" onAction="#pressNext" prefHeight="43.0" prefWidth="128.0" text="Next" />
-      <Button layoutX="207.0" layoutY="145.0" mnemonicParsing="false" onAction="#pressAddHole" prefHeight="43.0" prefWidth="128.0" text="Add" />
-      <TextField fx:id="startingAddress" layoutX="228.0" layoutY="86.0" prefHeight="43.0" prefWidth="270.0" promptText="Hole Starting Address" />
-      <Label layoutX="37.0" layoutY="40.0" prefHeight="32.0" prefWidth="64.0" text="Size:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="37.0" layoutY="90.0" prefHeight="35.0" prefWidth="181.0" text="Starting Address:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="37.0" layoutY="484.0" prefHeight="35.0" prefWidth="244.0" text="Number of Processes:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <TextField fx:id="NumberOfProcesses" layoutX="281.0" layoutY="480.0" prefHeight="43.0" prefWidth="232.0" promptText="Number Of processes " />
-      <Label layoutX="37.0" layoutY="214.0" prefHeight="35.0" prefWidth="164.0" text="Process Name:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="37.0" layoutY="275.0" prefHeight="35.0" prefWidth="152.0" text="Process Size: ">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="207.0" layoutY="340.0" mnemonicParsing="false" onAction="#pressAddProcess" prefHeight="43.0" prefWidth="128.0" text="Add" />
-      <TextField fx:id="ProcessName" layoutX="228.0" layoutY="210.0" prefHeight="43.0" prefWidth="270.0" promptText="Process Name " />
-      <TextField fx:id="ProcessSize" layoutX="228.0" layoutY="271.0" prefHeight="43.0" prefWidth="270.0" promptText="Process Size" />
-      <ComboBox fx:id="combobox" layoutX="281.0" layoutY="404.0" prefHeight="43.0" prefWidth="232.0" promptText="Select Type " />
-      <Label layoutX="43.0" layoutY="399.0" prefHeight="53.0" prefWidth="232.0" text="Method of Allocation:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
+      <HBox alignment="CENTER">
+         <children>
+            <GridPane alignment="CENTER_LEFT">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="92.0" minHeight="50.0" prefHeight="92.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="150.0" minHeight="108.0" prefHeight="108.0" vgrow="ALWAYS" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="size" promptText="Hole Size" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </TextField>
+                  <Label text="Hole Size:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <TextField fx:id="startingAddress" promptText="Hole Starting Address" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </TextField>
+                  <Label text="Hole Starting Address:" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+               </children>
+            </GridPane>
+            <Separator orientation="VERTICAL" />
+            <GridPane alignment="CENTER_LEFT">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="108.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Process Name:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Process Size: " GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <TextField fx:id="ProcessName" promptText="Process Name " GridPane.columnIndex="1">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="ProcessSize" promptText="Process Size" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressAddHole" text="Add Hole">
+                     <padding>
+                        <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <TableView fx:id="holesTable" onKeyPressed="#deleteHole" VBox.vgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="HoleAddressColumn" maxWidth="205.0" minWidth="-1.0" prefWidth="194.0" resizable="false" sortable="false" text="Hole Address" />
+                      <TableColumn fx:id="HoleSizeColumn" maxWidth="254.0" minWidth="-1.0" prefWidth="205.0" resizable="false" sortable="false" text="Hole Size" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" />
+            <VBox alignment="CENTER">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#pressAddProcess" text="Add Process">
+                     <padding>
+                        <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <TableView fx:id="processesTable" onKeyPressed="#deleteProcess">
+                    <columns>
+                      <TableColumn fx:id="ProcessNameColumn" prefWidth="195.0" sortable="false" text="Process Name" />
+                      <TableColumn fx:id="ProcessSizeColumn" prefWidth="204.0" sortable="false" text="Process Size" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+          <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="53.0" prefWidth="232.0" text="Method of Allocation:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <ComboBox fx:id="combobox" promptText="Select Type " GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></ComboBox>
+            <Label prefHeight="35.0" prefWidth="244.0" text="Number of Processes:" GridPane.rowIndex="1">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="NumberOfProcesses" prefHeight="43.0" prefWidth="232.0" promptText="Number Of processes " GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></TextField>
+         </children>
+      </GridPane>
+      <Button mnemonicParsing="false" onAction="#pressNext" text="Next">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+         </padding>
+      </Button>
    </children>
-</AnchorPane>
+</VBox>
