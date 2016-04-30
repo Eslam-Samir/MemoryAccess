@@ -20,6 +20,7 @@ public abstract class MemoryAllocator {
 	protected void FindSuitableHole(Process process, ArrayList<Process> currentState)
 	{
 		ArrayList<Process> nextState = new ArrayList<>();
+		boolean success = false;
 		for(int j = 0; j < currentState.size(); j++)
 		{
 			nextState.add(new Process(currentState.get(j)));
@@ -42,11 +43,15 @@ public abstract class MemoryAllocator {
 					current.setBaseAddress(newAddress);
 					current.setSize(newSize);
 				}
+				success = true;
 				break;
 			}
 		}
 		output.add(nextState);
-		stages.add("After " + process.getName() + " Allocation");
+		if(success)
+			stages.add("After " + process.getName() + " Allocation");
+		else
+			stages.add("Couldn't Allocate " + process.getName());
 	}
 	
 	public abstract void RunAllocator();	
@@ -128,7 +133,7 @@ public abstract class MemoryAllocator {
 			p = lastState.get(i);
 			if(p.getName().equals(process) && p.getType() != ProcessType.hole)
 			{
-				Process hole = new Process("hole", p.getSize(), p.getBaseAddress(), ProcessType.hole);
+				Process hole = new Process("Empty", p.getSize(), p.getBaseAddress(), ProcessType.hole);
 				lastState.remove(i);
 				lastState.add(i, hole);
 				if(i == 0 && size > 1 && lastState.get(i+1).getType() == ProcessType.hole

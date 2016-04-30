@@ -9,17 +9,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader =new FXMLLoader(getClass().getResource("Main.fxml"));
+			FXMLLoader loader =new FXMLLoader(getClass().getResource("/resources/Main.fxml"));
 			Parent root =loader.load();
 			Scene scene=new Scene(root);
-			primaryStage.setTitle("Memory Assignment");
+			primaryStage.setTitle("Memory Allocator");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
