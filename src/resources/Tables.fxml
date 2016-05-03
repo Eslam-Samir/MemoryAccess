@@ -26,8 +26,8 @@
       <TableView fx:id="table">
         <columns>
           <TableColumn fx:id="nameColumn" prefWidth="170.0" sortable="false" text="Process Name" />
-          <TableColumn fx:id="sizeColumn" prefWidth="170.0" sortable="false" text="size " />
             <TableColumn fx:id="baseAddressColumn" prefWidth="170.0" sortable="false" text="Base Address" />
+          <TableColumn fx:id="sizeColumn" prefWidth="170.0" sortable="false" text="size " />
         </columns>
          <VBox.margin>
             <Insets left="10.0" right="10.0" top="10.0" />

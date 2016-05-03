@@ -118,7 +118,8 @@ public class TablesController implements Initializable{
 		if(index == output.size()-1)
 		{
 			next.setDisable(true);
-			deallocationGrid.setVisible(true);
+			if(!names.isEmpty())
+				deallocationGrid.setDisable(false);
 		}
 	}
 	public void pressPrevious(ActionEvent event) 
@@ -128,7 +129,7 @@ public class TablesController implements Initializable{
 		if(index < output.size()-1)
 			next.setDisable(false);
 		
-		deallocationGrid.setVisible(false);
+		deallocationGrid.setDisable(true);
 		setStageTable();
 		
 		if(index == 0)
@@ -141,7 +142,7 @@ public class TablesController implements Initializable{
 		sizeColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("size"));
 		baseAddressColumn.setCellValueFactory(new PropertyValueFactory<Process, Long>("baseAddress"));
 		
-		deallocationGrid.setVisible(false);
+		deallocationGrid.setDisable(true);
 	}
 	
 	private void InitializeAllocator() 
@@ -178,7 +179,7 @@ public class TablesController implements Initializable{
 	{
 		if(processSelection.getSelectionModel().getSelectedIndex() < 0)
 		{
-			Common.createAlert("Select a Process to Deallocate", "Use the drop down list to select a process");
+			Common.createAlert("Select a Process to Deallocate", "Use the drop down list to select a process.");
 		}
 		else
 		{
@@ -194,8 +195,11 @@ public class TablesController implements Initializable{
 				{
 					Common.createAlert("Process "+deallocatedProcess+" can't be deallocated",
 							"The memory allocator couldn't allocate "+ deallocatedProcess+
-							", So it is not in the memory");
+							", So it is not in the memory to be de-allocated.");
 				}
+				
+				if(names.isEmpty())
+					deallocationGrid.setDisable(true);
 			}
 		}
 	}

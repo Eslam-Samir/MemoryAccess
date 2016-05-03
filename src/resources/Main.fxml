@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<VBox alignment="CENTER" prefHeight="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -30,7 +30,7 @@
                 <RowConstraints maxHeight="150.0" minHeight="108.0" prefHeight="108.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
-                  <Label text="Hole Size:">
+                  <Label text="Hole Size:" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -38,7 +38,7 @@
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Hole Base Address:" GridPane.rowIndex="1">
+                  <Label text="Hole Base Address:">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -46,7 +46,7 @@
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <NumberTextField fx:id="size" promptText="Hole Size" GridPane.columnIndex="1">
+                  <NumberTextField fx:id="size" promptText="Hole Size" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
@@ -54,7 +54,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </NumberTextField>
-                  <NumberTextField fx:id="startingAddress" promptText="Hole Base Address" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <NumberTextField fx:id="startingAddress" promptText="Hole Base Address" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
