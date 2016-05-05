@@ -25,7 +25,8 @@ public class BestFitAllocator extends MemoryAllocator {
 		{
 			Process process = InputProcesses.get(i);
 			ArrayList<Process> currentState = output.get(i);
-			Collections.sort(initialState, new Comparator<Process>() {
+			int lastIndex = output.size()-1;
+			Collections.sort(output.get(lastIndex), new Comparator<Process>() {
 				@Override
 				public int compare(Process p1, Process p2) {
 					if(p1.getSize() < p2.getSize())
